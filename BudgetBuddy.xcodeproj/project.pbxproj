@@ -9,13 +9,26 @@
 /* Begin PBXBuildFile section */
 		432CE8A62B4CFC6400F2F564 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE8A52B4CFC6400F2F564 /* AppDelegate.swift */; };
 		432CE8A82B4CFC6400F2F564 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE8A72B4CFC6400F2F564 /* SceneDelegate.swift */; };
-		432CE8AA2B4CFC6400F2F564 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE8A92B4CFC6400F2F564 /* ViewController.swift */; };
-		432CE8AD2B4CFC6400F2F564 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432CE8AB2B4CFC6400F2F564 /* Main.storyboard */; };
+		432CE8AA2B4CFC6400F2F564 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE8A92B4CFC6400F2F564 /* HomeViewController.swift */; };
 		432CE8AF2B4CFC6500F2F564 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 432CE8AE2B4CFC6500F2F564 /* Assets.xcassets */; };
 		432CE8B22B4CFC6500F2F564 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 432CE8B02B4CFC6500F2F564 /* LaunchScreen.storyboard */; };
 		432CE8BD2B4CFC6500F2F564 /* BudgetBuddyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE8BC2B4CFC6500F2F564 /* BudgetBuddyTests.swift */; };
 		432CE8C72B4CFC6500F2F564 /* BudgetBuddyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE8C62B4CFC6500F2F564 /* BudgetBuddyUITests.swift */; };
 		432CE8C92B4CFC6500F2F564 /* BudgetBuddyUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE8C82B4CFC6500F2F564 /* BudgetBuddyUITestsLaunchTests.swift */; };
+		432CE8D62B4D05EF00F2F564 /* MoneyInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE8D52B4D05EF00F2F564 /* MoneyInformationView.swift */; };
+		432CE8D82B4DB80B00F2F564 /* MonthSelectionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE8D72B4DB80B00F2F564 /* MonthSelectionButton.swift */; };
+		432CE8DA2B4DC65C00F2F564 /* NotificationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 432CE8D92B4DC65C00F2F564 /* NotificationButton.swift */; };
+		434A7D0E2B4F023600A304A3 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434A7D0D2B4F023600A304A3 /* HomeViewModel.swift */; };
+		434A7D102B4F027F00A304A3 /* MainTransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434A7D0F2B4F027F00A304A3 /* MainTransactionModel.swift */; };
+		434A7D122B4F088100A304A3 /* TransactionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434A7D112B4F088100A304A3 /* TransactionsTableViewCell.swift */; };
+		434A7D142B4F174100A304A3 /* OverallExpenseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434A7D132B4F174100A304A3 /* OverallExpenseView.swift */; };
+		434A7D162B4F1AF600A304A3 /* FinancePriceSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434A7D152B4F1AF600A304A3 /* FinancePriceSummary.swift */; };
+		434A7D182B4F1F5900A304A3 /* MainTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434A7D172B4F1F5900A304A3 /* MainTabBarViewController.swift */; };
+		434A7D1A2B4F212800A304A3 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434A7D192B4F212800A304A3 /* SettingsViewController.swift */; };
+		434A7D1C2B4F213500A304A3 /* TransactionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434A7D1B2B4F213500A304A3 /* TransactionsViewController.swift */; };
+		435FDB662B4FF06B0041276D /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435FDB652B4FF06B0041276D /* UIColor + Extension.swift */; };
+		435FDB682B4FF1AE0041276D /* LineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435FDB672B4FF1AE0041276D /* LineChartView.swift */; };
+		435FDB6A2B5000A80041276D /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435FDB692B5000A80041276D /* ChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,8 +52,7 @@
 		432CE8A22B4CFC6400F2F564 /* BudgetBuddy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BudgetBuddy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		432CE8A52B4CFC6400F2F564 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		432CE8A72B4CFC6400F2F564 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		432CE8A92B4CFC6400F2F564 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		432CE8AC2B4CFC6400F2F564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		432CE8A92B4CFC6400F2F564 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		432CE8AE2B4CFC6500F2F564 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		432CE8B12B4CFC6500F2F564 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		432CE8B32B4CFC6500F2F564 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +61,20 @@
 		432CE8C22B4CFC6500F2F564 /* BudgetBuddyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BudgetBuddyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		432CE8C62B4CFC6500F2F564 /* BudgetBuddyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetBuddyUITests.swift; sourceTree = "<group>"; };
 		432CE8C82B4CFC6500F2F564 /* BudgetBuddyUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetBuddyUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		432CE8D52B4D05EF00F2F564 /* MoneyInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoneyInformationView.swift; sourceTree = "<group>"; };
+		432CE8D72B4DB80B00F2F564 /* MonthSelectionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MonthSelectionButton.swift; sourceTree = "<group>"; };
+		432CE8D92B4DC65C00F2F564 /* NotificationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationButton.swift; sourceTree = "<group>"; };
+		434A7D0D2B4F023600A304A3 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		434A7D0F2B4F027F00A304A3 /* MainTransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTransactionModel.swift; sourceTree = "<group>"; };
+		434A7D112B4F088100A304A3 /* TransactionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsTableViewCell.swift; sourceTree = "<group>"; };
+		434A7D132B4F174100A304A3 /* OverallExpenseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverallExpenseView.swift; sourceTree = "<group>"; };
+		434A7D152B4F1AF600A304A3 /* FinancePriceSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancePriceSummary.swift; sourceTree = "<group>"; };
+		434A7D172B4F1F5900A304A3 /* MainTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarViewController.swift; sourceTree = "<group>"; };
+		434A7D192B4F212800A304A3 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		434A7D1B2B4F213500A304A3 /* TransactionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsViewController.swift; sourceTree = "<group>"; };
+		435FDB652B4FF06B0041276D /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
+		435FDB672B4FF1AE0041276D /* LineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineChartView.swift; sourceTree = "<group>"; };
+		435FDB692B5000A80041276D /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,11 +127,21 @@
 			children = (
 				432CE8A52B4CFC6400F2F564 /* AppDelegate.swift */,
 				432CE8A72B4CFC6400F2F564 /* SceneDelegate.swift */,
-				432CE8A92B4CFC6400F2F564 /* ViewController.swift */,
-				432CE8AB2B4CFC6400F2F564 /* Main.storyboard */,
+				434A7D0C2B4F01A300A304A3 /* HomeMVVM */,
 				432CE8AE2B4CFC6500F2F564 /* Assets.xcassets */,
 				432CE8B02B4CFC6500F2F564 /* LaunchScreen.storyboard */,
 				432CE8B32B4CFC6500F2F564 /* Info.plist */,
+				432CE8D52B4D05EF00F2F564 /* MoneyInformationView.swift */,
+				432CE8D72B4DB80B00F2F564 /* MonthSelectionButton.swift */,
+				432CE8D92B4DC65C00F2F564 /* NotificationButton.swift */,
+				434A7D112B4F088100A304A3 /* TransactionsTableViewCell.swift */,
+				434A7D132B4F174100A304A3 /* OverallExpenseView.swift */,
+				434A7D172B4F1F5900A304A3 /* MainTabBarViewController.swift */,
+				434A7D192B4F212800A304A3 /* SettingsViewController.swift */,
+				434A7D1B2B4F213500A304A3 /* TransactionsViewController.swift */,
+				435FDB652B4FF06B0041276D /* UIColor + Extension.swift */,
+				435FDB672B4FF1AE0041276D /* LineChartView.swift */,
+				435FDB692B5000A80041276D /* ChartView.swift */,
 			);
 			path = BudgetBuddy;
 			sourceTree = "<group>";
@@ -125,6 +161,17 @@
 				432CE8C82B4CFC6500F2F564 /* BudgetBuddyUITestsLaunchTests.swift */,
 			);
 			path = BudgetBuddyUITests;
+			sourceTree = "<group>";
+		};
+		434A7D0C2B4F01A300A304A3 /* HomeMVVM */ = {
+			isa = PBXGroup;
+			children = (
+				432CE8A92B4CFC6400F2F564 /* HomeViewController.swift */,
+				434A7D0D2B4F023600A304A3 /* HomeViewModel.swift */,
+				434A7D0F2B4F027F00A304A3 /* MainTransactionModel.swift */,
+				434A7D152B4F1AF600A304A3 /* FinancePriceSummary.swift */,
+			);
+			path = HomeMVVM;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +280,6 @@
 			files = (
 				432CE8B22B4CFC6500F2F564 /* LaunchScreen.storyboard in Resources */,
 				432CE8AF2B4CFC6500F2F564 /* Assets.xcassets in Resources */,
-				432CE8AD2B4CFC6400F2F564 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,8 +304,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				432CE8AA2B4CFC6400F2F564 /* ViewController.swift in Sources */,
+				434A7D1C2B4F213500A304A3 /* TransactionsViewController.swift in Sources */,
+				434A7D122B4F088100A304A3 /* TransactionsTableViewCell.swift in Sources */,
+				432CE8DA2B4DC65C00F2F564 /* NotificationButton.swift in Sources */,
+				435FDB682B4FF1AE0041276D /* LineChartView.swift in Sources */,
+				434A7D102B4F027F00A304A3 /* MainTransactionModel.swift in Sources */,
+				432CE8D82B4DB80B00F2F564 /* MonthSelectionButton.swift in Sources */,
+				432CE8AA2B4CFC6400F2F564 /* HomeViewController.swift in Sources */,
+				434A7D162B4F1AF600A304A3 /* FinancePriceSummary.swift in Sources */,
+				434A7D0E2B4F023600A304A3 /* HomeViewModel.swift in Sources */,
 				432CE8A62B4CFC6400F2F564 /* AppDelegate.swift in Sources */,
+				435FDB6A2B5000A80041276D /* ChartView.swift in Sources */,
+				435FDB662B4FF06B0041276D /* UIColor + Extension.swift in Sources */,
+				434A7D142B4F174100A304A3 /* OverallExpenseView.swift in Sources */,
+				434A7D182B4F1F5900A304A3 /* MainTabBarViewController.swift in Sources */,
+				434A7D1A2B4F212800A304A3 /* SettingsViewController.swift in Sources */,
+				432CE8D62B4D05EF00F2F564 /* MoneyInformationView.swift in Sources */,
 				432CE8A82B4CFC6400F2F564 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,14 +357,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		432CE8AB2B4CFC6400F2F564 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				432CE8AC2B4CFC6400F2F564 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		432CE8B02B4CFC6500F2F564 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -441,7 +493,6 @@
 				INFOPLIST_FILE = BudgetBuddy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -468,7 +519,6 @@
 				INFOPLIST_FILE = BudgetBuddy/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
