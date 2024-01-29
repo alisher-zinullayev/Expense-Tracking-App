@@ -13,20 +13,29 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        
+//
         let viewModel = HomeViewModel()
         let homeViewController = HomeViewController(viewModel: viewModel)
-
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
         window?.rootViewController = UINavigationController(rootViewController: homeViewController)
         window?.makeKeyAndVisible()
+        ///
+        
+//        let viewModel = TransactionAddViewModel()
+//        let homeViewController = TransactionAddViewController(viewModel: viewModel)
+//
+//        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+//        window?.windowScene = windowScene
+//        window?.rootViewController = UINavigationController(rootViewController: homeViewController)
+//        window?.makeKeyAndVisible()
+    }
+    
+    
 //        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
 //        window?.windowScene = windowScene
 //        window?.rootViewController = MainTabBarViewController()
 //        window?.makeKeyAndVisible()
-    }
-    
 
     
 //        guard let windowScene = (scene as? UIWindowScene) else { return }

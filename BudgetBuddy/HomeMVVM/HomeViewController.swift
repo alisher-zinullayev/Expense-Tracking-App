@@ -7,14 +7,15 @@
 
 import UIKit
 import SwiftUI
+import Combine
 
 protocol TransactionViewProtocol {
     var viewModel: HomeViewModel {get set}
 }
 
 final class HomeViewController: UIViewController, TransactionViewProtocol {
-
     var viewModel: HomeViewModel
+    private var chartView: UIHostingController<ChartView>?
     
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
@@ -29,35 +30,6 @@ final class HomeViewController: UIViewController, TransactionViewProtocol {
         super.viewDidLoad()
         setAllUI()
         bindingViewModel()
-    }
-    
-    private var chartView: UIHostingController<ChartView>?
-    
-    private func setAllUI() {
-        mainTableView.delegate = self
-        mainTableView.dataSource = self
-        setChart()
-        setupUI()
-        setValues()
-        view.backgroundColor = .systemBackground
-    }
-    
-    // gpt
-    private func setChart() {
-        let chartVC = UIHostingController(rootView: ChartView())
-        addChild(chartVC)
-        chartVC.view.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(chartVC.view)
-        chartVC.didMove(toParent: self)
-        self.chartView = chartVC
-    }
-    
-    private func bindingViewModel() {
-        viewModel.onTransactionsUpdated = { [weak self] in
-            DispatchQueue.main.async {
-                self?.mainTableView.reloadData()
-            }
-        }
     }
     
     private let overallExpenseView: OverallExpenseView = {
@@ -87,22 +59,15 @@ final class HomeViewController: UIViewController, TransactionViewProtocol {
         return tableView
     }()
     
-    // This button was added to check whether viewModel.addTransaction robit or not
-    private let buttonAdd: UIButton = {
+    private let pushViewControllerButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("+ Transaction", for: .normal)
-        button.setTitleColor(.gray, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        button.setTitleColor(.gray, for: .normal)
-        button.addTarget(self, action: #selector(addTransaction), for: .touchUpInside)
+        button.setImage(UIImage(systemName: "plus.app.fill"), for: .normal)
+        button.tintColor = .gray
+        button.imageView?.contentMode = .scaleAspectFit
+        button.addTarget(self, action: #selector(pushVC), for: .touchUpInside)
         return button
     }()
-    
-    @objc func addTransaction() {
-        viewModel.addTransaction(MainTransactionModel(category: .education, logo: .education, price: 2000, description: "Beshbarmak", date: Date()))
-    }
-    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
@@ -115,8 +80,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         let transaction = viewModel.transaction(at: indexPath)
-        cell.configure(with: transaction) // added
-        
+        cell.configure(with: transaction)
         return cell
     }
     
@@ -129,14 +93,12 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
 
 // UI
 extension HomeViewController {
-    
     private func setupUI() {
-        
         view.addSubview(overallExpenseView)
         view.addSubview(incomeInformationView)
         view.addSubview(expensesInformationView)
         view.addSubview(mainTableView)
-        view.addSubview(buttonAdd)
+        view.addSubview(pushViewControllerButton)
         
         let overallExpenseViewConstraints = [
             overallExpenseView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 8),
@@ -170,10 +132,12 @@ extension HomeViewController {
             mainTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
         ]
         
-        let buttonConstraints = [
-            buttonAdd.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            buttonAdd.topAnchor.constraint(equalTo: mainTableView.bottomAnchor, constant: 20),
-            buttonAdd.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        let pushViewControllerButtonConstraints = [
+            pushViewControllerButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            pushViewControllerButton.topAnchor.constraint(equalTo: mainTableView.bottomAnchor, constant: 20),
+            pushViewControllerButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -30),
+            pushViewControllerButton.heightAnchor.constraint(equalToConstant: 100),
+            pushViewControllerButton.widthAnchor.constraint(equalToConstant: 100)
         ]
         
         NSLayoutConstraint.activate(overallExpenseViewConstraints)
@@ -181,7 +145,7 @@ extension HomeViewController {
         NSLayoutConstraint.activate(expensesInformationViewConstraints)
         NSLayoutConstraint.activate(chartConstraints)
         NSLayoutConstraint.activate(mainTableViewConstraints)
-        NSLayoutConstraint.activate(buttonConstraints)
+        NSLayoutConstraint.activate(pushViewControllerButtonConstraints)
     }
     
     private func setValues() {
@@ -189,4 +153,34 @@ extension HomeViewController {
         expensesInformationView.setupValues(name: "Expense", price: "$1500")
     }
     
+    private func setAllUI() {
+        mainTableView.delegate = self
+        mainTableView.dataSource = self
+        setChart()
+        setupUI()
+        setValues()
+        view.backgroundColor = .systemBackground
+    }
+    
+    private func setChart() {
+        let chartVC = UIHostingController(rootView: ChartView())
+        addChild(chartVC)
+        chartVC.view.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(chartVC.view)
+        chartVC.didMove(toParent: self)
+        self.chartView = chartVC
+    }
+    
+    private func bindingViewModel() {
+        viewModel.onTransactionsUpdated = { [weak self] in
+            DispatchQueue.main.async {
+                self?.mainTableView.reloadData()
+            }
+        }
+    }
+    
+    @objc func pushVC() {
+        let vc = TransactionAddViewController(viewModel: TransactionAddViewModel())
+        navigationController?.pushViewController(vc, animated: true)
+    }
 }

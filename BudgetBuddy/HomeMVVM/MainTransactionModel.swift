@@ -21,6 +21,21 @@ enum TransactionCategory: String, CaseIterable {
     case subscription = "Subscription"
     case food = "Food"
     case other = "Other"
+    
+    var logo: TransactionCategoryLogo {
+        switch self {
+        case .shopping:
+            return .shopping
+        case .education:
+            return .education
+        case .subscription:
+            return .subscription
+        case .food:
+            return .food
+        case .other:
+            return .other
+        }
+    }
 }
 
 struct MainTransactionModel {
