@@ -88,5 +88,4 @@ final class TopView: UIView {
         NSLayoutConstraint.activate(greetingsConstraints)
         NSLayoutConstraint.activate(wishesTextConstraints)
     }
-    
 }

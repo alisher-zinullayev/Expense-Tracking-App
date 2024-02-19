@@ -22,10 +22,8 @@
 		434A7D102B4F027F00A304A3 /* MainTransactionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434A7D0F2B4F027F00A304A3 /* MainTransactionModel.swift */; };
 		434A7D122B4F088100A304A3 /* TransactionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434A7D112B4F088100A304A3 /* TransactionsTableViewCell.swift */; };
 		434A7D162B4F1AF600A304A3 /* FinancePriceSummary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 434A7D152B4F1AF600A304A3 /* FinancePriceSummary.swift */; };
-		435523332B6F9CE900FF00D5 /* IncomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435523322B6F9CE900FF00D5 /* IncomeViewController.swift */; };
 		435FDB662B4FF06B0041276D /* UIColor + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435FDB652B4FF06B0041276D /* UIColor + Extension.swift */; };
-		435FDB6A2B5000A80041276D /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435FDB692B5000A80041276D /* ChartView.swift */; };
-		435FDB6E2B507D770041276D /* ExpenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435FDB6D2B507D770041276D /* ExpenseViewController.swift */; };
+		435FDB6E2B507D770041276D /* TransactionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 435FDB6D2B507D770041276D /* TransactionViewController.swift */; };
 		438C497B2B7A1082006F37BC /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C497A2B7A1082006F37BC /* StatisticsViewController.swift */; };
 		438C497E2B7A1125006F37BC /* StatisticsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C497D2B7A1125006F37BC /* StatisticsViewModel.swift */; };
 		438C49802B7A3E25006F37BC /* DateCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 438C497F2B7A3E25006F37BC /* DateCollectionViewCell.swift */; };
@@ -71,10 +69,8 @@
 		434A7D0F2B4F027F00A304A3 /* MainTransactionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTransactionModel.swift; sourceTree = "<group>"; };
 		434A7D112B4F088100A304A3 /* TransactionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsTableViewCell.swift; sourceTree = "<group>"; };
 		434A7D152B4F1AF600A304A3 /* FinancePriceSummary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancePriceSummary.swift; sourceTree = "<group>"; };
-		435523322B6F9CE900FF00D5 /* IncomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncomeViewController.swift; sourceTree = "<group>"; };
 		435FDB652B4FF06B0041276D /* UIColor + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor + Extension.swift"; sourceTree = "<group>"; };
-		435FDB692B5000A80041276D /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
-		435FDB6D2B507D770041276D /* ExpenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpenseViewController.swift; sourceTree = "<group>"; };
+		435FDB6D2B507D770041276D /* TransactionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionViewController.swift; sourceTree = "<group>"; };
 		438C497A2B7A1082006F37BC /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
 		438C497D2B7A1125006F37BC /* StatisticsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewModel.swift; sourceTree = "<group>"; };
 		438C497F2B7A3E25006F37BC /* DateCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -167,8 +163,7 @@
 		433D60D82B5E79F900BAEAA1 /* TransactionManager */ = {
 			isa = PBXGroup;
 			children = (
-				435FDB6D2B507D770041276D /* ExpenseViewController.swift */,
-				435523322B6F9CE900FF00D5 /* IncomeViewController.swift */,
+				435FDB6D2B507D770041276D /* TransactionViewController.swift */,
 				43A9F2E62B76BD3400D79616 /* TransactionDetailViewController.swift */,
 			);
 			path = TransactionManager;
@@ -217,7 +212,6 @@
 				4349D2C22B73FD0700739797 /* TopView.swift */,
 				4349D2BE2B73ECF100739797 /* AllPricesView.swift */,
 				434A7D112B4F088100A304A3 /* TransactionsTableViewCell.swift */,
-				435FDB692B5000A80041276D /* ChartView.swift */,
 				438C497F2B7A3E25006F37BC /* DateCollectionViewCell.swift */,
 			);
 			path = Views;
@@ -356,7 +350,6 @@
 				434A7D122B4F088100A304A3 /* TransactionsTableViewCell.swift in Sources */,
 				434A7D102B4F027F00A304A3 /* MainTransactionModel.swift in Sources */,
 				43EEE2B12B6CF7730069BEE3 /* CoreDataManager.swift in Sources */,
-				435523332B6F9CE900FF00D5 /* IncomeViewController.swift in Sources */,
 				438C49802B7A3E25006F37BC /* DateCollectionViewCell.swift in Sources */,
 				43EEE28C2B6CE2FD0069BEE3 /* TransactionsCoreData.xcdatamodeld in Sources */,
 				432CE8AA2B4CFC6400F2F564 /* HomeViewController.swift in Sources */,
@@ -366,9 +359,8 @@
 				4349D2BF2B73ECF100739797 /* AllPricesView.swift in Sources */,
 				438C497E2B7A1125006F37BC /* StatisticsViewModel.swift in Sources */,
 				432CE8A62B4CFC6400F2F564 /* AppDelegate.swift in Sources */,
-				435FDB6A2B5000A80041276D /* ChartView.swift in Sources */,
 				435FDB662B4FF06B0041276D /* UIColor + Extension.swift in Sources */,
-				435FDB6E2B507D770041276D /* ExpenseViewController.swift in Sources */,
+				435FDB6E2B507D770041276D /* TransactionViewController.swift in Sources */,
 				43A9F2E72B76BD3400D79616 /* TransactionDetailViewController.swift in Sources */,
 				438C497B2B7A1082006F37BC /* StatisticsViewController.swift in Sources */,
 				4349D2C32B73FD0700739797 /* TopView.swift in Sources */,

@@ -8,7 +8,6 @@
 import UIKit
 
 final class TransactionsTableViewCell: UITableViewCell {
-
     static let identifier = String(describing: TransactionsTableViewCell.self)
     
     var model: MainTransactionModel?

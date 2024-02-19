@@ -8,9 +8,7 @@
 import UIKit
 
 final class TransactionDetailViewController: UIViewController {
-
     private var item: TransactionsCD
-//    private let viewModel: HomeViewModel
     
     private let bottomView: UIView = {
         let view = UIView()

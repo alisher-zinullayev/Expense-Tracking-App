@@ -9,7 +9,6 @@ import UIKit
 import SwiftUI
 
 final class StatisticsViewController: UIViewController {
-    
     private let dates = ["Week", "Month", "Year"]
     private var viewModel: StatisticsViewModel
     private var chartView: UIHostingController<TransactionChartView>?
@@ -36,8 +35,6 @@ final class StatisticsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        
-//        print(viewModel.getPriceFor(date: .year, type: .total))
         
         view.backgroundColor = .systemGreen
         collectionView.dataSource = self

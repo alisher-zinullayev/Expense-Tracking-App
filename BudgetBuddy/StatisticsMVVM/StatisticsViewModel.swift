@@ -10,25 +10,24 @@ import UIKit
 import CoreData
 
 final class StatisticsViewModel {
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private let coreDataManager: CoreDataManager
+    private var viewModel: HomeViewModel
 
-    init(coreDataManager: CoreDataManager) {
+    init(coreDataManager: CoreDataManager, viewModel: HomeViewModel) {
         self.coreDataManager = coreDataManager
+        self.viewModel = viewModel
         coreDataManager.getTransactions()
     }
     
-    func getPriceFor(date: CustomDate, type: CustomType) -> [TransactionsCD] {
-        return coreDataManager.getPriceFor(date: date, type: type)
+    func getPriceFor(date: TransactionDate, type: TransactionType) -> [TransactionsCD] {
+        return viewModel.getPriceFor(date: date, type: type)
     }
-    
 }
 
-enum CustomDate {
+enum TransactionDate {
     case week, month, year
 }
 
-enum CustomType: String {
+enum TransactionType: String {
     case expense, income, total
 }

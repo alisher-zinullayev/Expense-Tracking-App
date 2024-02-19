@@ -1,5 +1,5 @@
 //
-//  TransactionAddViewController.swift
+//  TransactionViewController.swift
 //  BudgetBuddy
 //
 //  Created by Alisher Zinullayev on 12.01.2024.
@@ -7,11 +7,17 @@
 
 import UIKit
 
-final class ExpenseViewController: UIViewController {
-    var viewModel: HomeViewModel
+enum ExpenseType {
+    case income, expense
+}
+
+final class TransactionViewController: UIViewController {
+    private var viewModel: HomeViewModel
+    private var type: ExpenseType
     
-    init(viewModel: HomeViewModel) {
+    init(viewModel: HomeViewModel, type: ExpenseType) {
         self.viewModel = viewModel
+        self.type = type
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -21,7 +27,7 @@ final class ExpenseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hex: "FD3C4A") //.systemBlue
+        view.backgroundColor = .systemBackground
         mainTableView.delegate = self
         mainTableView.dataSource = self
         setupUI()
@@ -34,7 +40,7 @@ final class ExpenseViewController: UIViewController {
     private let containerView: UIView = {
         let view = UIView()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = UIColor(hex: "FD3C4A")
+        view.backgroundColor = .systemBackground //UIColor(hex: "FD3C4A")
         return view
     }()
     
@@ -73,7 +79,7 @@ final class ExpenseViewController: UIViewController {
         return label
     }()
     
-    private let expensesText:UILabel = {
+    private let expensesText: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
@@ -151,31 +157,56 @@ final class ExpenseViewController: UIViewController {
     }()
 }
 
-extension ExpenseViewController {
+extension TransactionViewController {
     @objc func chooseCategory() {
         mainTableView.isHidden = mainTableView.isHidden == false ? true : false
     }
     
     @objc func addTransaction() {
-        let categoryString = selectCategoryButton.titleLabel?.text ?? TransactionCategory.other.rawValue
-        let category = TransactionCategory(rawValue: categoryString) ?? TransactionCategory.other
         
-        viewModel.createExpense(
-            name: description_expense.text!,
-            price: Double(price_expense.text!) ?? 0,
-            date: datePicker.date,
-            category: category.rawValue,
-            logo: category.logo.rawValue,
-            isIncome: false
-        )
-        
-        mainTableView.isHidden = true
+        switch type {
+        case .expense:
+            let categoryString = selectCategoryButton.titleLabel?.text ?? TransactionCategory.other.rawValue
+            let category = TransactionCategory(rawValue: categoryString) ?? TransactionCategory.other
+            viewModel.createExpense(
+                name: description_expense.text!,
+                price: Double(price_expense.text!) ?? 0,
+                date: datePicker.date,
+                category: category.rawValue,
+                logo: category.logo.rawValue,
+                isIncome: false
+            )
+            mainTableView.isHidden = true
+            selectCategoryButton.setTitle("Select an option", for: .normal)
+        case .income:
+            viewModel.createExpense(
+                name: description_expense.text!,
+                price: Double(price_expense.text!) ?? 0,
+                date: datePicker.date,
+                category: "Income",
+                logo: "dollarsign.circle.fill",
+                isIncome: true
+            )
+        }
         price_expense.text = ""
         description_expense.text = ""
-        selectCategoryButton.setTitle("Select an option", for: .normal)
     }
     
     private func setupUI() {
+        
+        switch type {
+        case .expense:
+            view.backgroundColor = UIColor(hex: "FD3C4A")
+            containerView.backgroundColor = UIColor(hex: "FD3C4A")
+            expensesText.text = "Expense"
+        case .income:
+            view.backgroundColor = .systemGreen
+            containerView.backgroundColor = .systemGreen
+            expensesText.text = "Income"
+            mainTableView.isHidden = true
+            selectCategoryButton.isHidden = true
+        }
+        
         view.addSubview(containerView)
         view.addSubview(containerViewForSV)
         containerView.addSubview(expensesText)
@@ -259,22 +290,21 @@ extension ExpenseViewController {
     }
 }
 
-extension ExpenseViewController: UITextFieldDelegate {
+extension TransactionViewController: UITextFieldDelegate {
     private func keyboardConfiguration() {
         description_expense.keyboardType = .default
         price_expense.keyboardType = .numberPad
     }
 }
 
-extension ExpenseViewController: UITableViewDelegate, UITableViewDataSource {
+extension TransactionViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return TransactionCategory.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        guard let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? UITableViewCell else {return UITableViewCell()}
         let cell = UITableViewCell()
-        cell.textLabel?.text = TransactionCategory.allCases[indexPath.row].rawValue // TransactionCategoryLogo.allCases[indexPath.row].rawValue
+        cell.textLabel?.text = TransactionCategory.allCases[indexPath.row].rawValue
         return cell
     }
     

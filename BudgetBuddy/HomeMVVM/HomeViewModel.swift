@@ -6,12 +6,9 @@
 //
 
 import Foundation
-import Combine
 import UIKit
 
 final class HomeViewModel {
-    
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     private let coreDataManager: CoreDataManager
     
     init(coreDataManager: CoreDataManager) {
@@ -26,9 +23,48 @@ final class HomeViewModel {
     }
     
     func getAllPrices() -> [Double] {
-        let income = coreDataManager.getIncomePrice()
-        let expenses = coreDataManager.getExpensesPrice()
-        return [income-expenses, income, expenses]
+        let transactions = coreDataManager.getTransactions()
+        
+        var incomeCount: Double = 0
+        var expenseCount: Double = 0
+        for i in transactions {
+            if !i.isIncome {
+                expenseCount += i.price
+            } else {
+                incomeCount += i.price
+            }
+        }
+        return [incomeCount-expenseCount, incomeCount, expenseCount]
+    }
+    
+    func getPriceFor(date: TransactionDate, type: TransactionType) -> [TransactionsCD] {
+        let transactions = coreDataManager.getTransactions()
+        let now = Date()
+        var startDate: Date?
+        let calendar = Calendar.current
+        
+        switch date {
+        case .week:
+            startDate = calendar.date(byAdding: .weekOfYear, value: -1, to: now)
+        case .month:
+            startDate = calendar.date(byAdding: .month, value: -1, to: now)
+        case .year:
+            startDate = calendar.date(byAdding: .year, value: -1, to: now)
+        }
+        
+        let transactionsFilteredByDate = transactions.filter { transaction in
+            guard let startDate = startDate else {return false}
+            return transaction.date ?? Date() >= startDate && transaction.date ?? Date() <= now
+        }
+        
+        switch type {
+        case .expense:
+            return transactionsFilteredByDate.filter { !$0.isIncome }
+        case .income:
+            return transactionsFilteredByDate.filter { $0.isIncome }
+        case .total:
+            return transactionsFilteredByDate
+        }
     }
     
     func transaction(at index: Int) -> TransactionsCD {

@@ -76,7 +76,7 @@ final class DateCollectionViewCell: UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-//        dataLabel.text = nil
+        dataLabel.text = nil
     }
     
     func configure(label: String) {

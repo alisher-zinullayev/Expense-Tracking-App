@@ -6,12 +6,10 @@
 //
 
 import UIKit
-import SwiftUI
-
 
 final class HomeViewController: UIViewController {
     private var viewModel: HomeViewModel
-    var allPrices: [Double] = []
+    private var allPrices: [Double] = []
     
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
@@ -95,7 +93,7 @@ final class HomeViewController: UIViewController {
         button.tintColor = UIColor.buttonColor
         button.imageView?.contentMode = .scaleToFill
         button.alpha = 0
-        button.addTarget(self, action: #selector(incomePushViewController), for: .touchUpInside)
+        button.addTarget(self, action: #selector(pushTransactionViewController(_:)), for: .touchUpInside)
         return button
     }()
     
@@ -108,7 +106,7 @@ final class HomeViewController: UIViewController {
         button.tintColor = UIColor.buttonColor
         button.imageView?.contentMode = .scaleToFill
         button.alpha = 0
-        button.addTarget(self, action: #selector(expensePushViewController), for: .touchUpInside)
+        button.addTarget(self, action: #selector(pushTransactionViewController(_:)), for: .touchUpInside)
         return button
     }()
 }
@@ -117,7 +115,7 @@ extension HomeViewController {
     private func bindingViewModel() {
         viewModel.onTransactionsUpdated = { [weak self] in
             DispatchQueue.main.async {
-                guard let self = self else {return}
+                guard let self else {return}
                 self.mainTableView.reloadData()
                 self.updatePrices()
             }
@@ -249,7 +247,8 @@ extension HomeViewController {
         view.backgroundColor = .systemBackground
     }
     
-    @objc func pushVC() {
+    @objc
+    func pushVC() {
         let shouldShow = incomePushButton.alpha == 0
         UIView.animate(withDuration: 0.3) {
             self.incomePushButton.alpha = shouldShow ? 1 : 0
@@ -259,13 +258,10 @@ extension HomeViewController {
         }
     }
     
-    @objc func incomePushViewController() {
-        let vc = IncomeViewController(viewModel: viewModel)
-        navigationController?.pushViewController(vc, animated: true)
-    }
-    
-    @objc func expensePushViewController() {
-        let vc = ExpenseViewController(viewModel: viewModel)
+    @objc
+    func pushTransactionViewController(_ sender: UIButton) {
+        let type: ExpenseType = sender == incomePushButton ? .income : .expense
+        let vc = TransactionViewController(viewModel: viewModel, type: type)
         navigationController?.pushViewController(vc, animated: true)
     }
     
@@ -275,7 +271,6 @@ extension HomeViewController {
         containerView.alpha = 1.0
         containerView.isUserInteractionEnabled = true
     }
-    
 }
 
 fileprivate extension UIColor {
